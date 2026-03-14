@@ -40,7 +40,7 @@ export function canAccessRoute(role: UserRole, path: string): boolean {
   return false;
 }
 
-export function getDefaultRoute(role: UserRole): string {
+export function getDefaultRoute(_role: UserRole): string {
   return '/';
 }
 

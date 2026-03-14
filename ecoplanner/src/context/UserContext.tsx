@@ -26,7 +26,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
           if (saved) setCurrentUser(saved);
         }
       }
-    }).catch(() => {});
+    }).then(() => {}, () => {});
   }, []);
 
   const switchUser = (userId: string) => {

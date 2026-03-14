@@ -109,7 +109,7 @@ export default function ObservationRoom() {
     const visitsByLoc = new Map<string, typeof db.visits>();
     for (const v of db.visits) { const arr = visitsByLoc.get(v.location_id) || []; arr.push(v); visitsByLoc.set(v.location_id, arr); }
     const measByVisit = new Map<string, typeof db.measurements>();
-    for (const m of db.measurements) { const arr = measByVisit.get(m.visit_id) || []; arr.push(m); measByVisit.set(m.visit_id, arr); }
+    for (const m of db.measurements) { if (!m.visit_id) continue; const arr = measByVisit.get(m.visit_id) || []; arr.push(m); measByVisit.set(m.visit_id, arr); }
 
     return db.locations.map((loc, i) => {
       const locVisits = (visitsByLoc.get(loc.id) || []).sort((a, b) => b.planned_date.localeCompare(a.planned_date));

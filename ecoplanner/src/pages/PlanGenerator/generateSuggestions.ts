@@ -4,7 +4,6 @@ import {
   locations,
   measurementTemplates,
   planEntries,
-  visits,
 } from '../../data/mockData';
 
 // Water quality thresholds (EU/Slovenian standards)

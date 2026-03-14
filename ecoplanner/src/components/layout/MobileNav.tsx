@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Home, Map, BarChart3, Beaker, DollarSign, ClipboardList, FlaskConical, Lightbulb } from 'lucide-react';
 import { useUser } from '../../context/UserContext';
-import type { UserRole } from '../../types';
+
 
 const allMobileItems = [
   { to: '/', icon: Home, label: 'Home', roles: ['admin', 'planner', 'field_worker', 'analyst'] },

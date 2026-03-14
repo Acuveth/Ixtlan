@@ -398,11 +398,6 @@ export default function PipelineTracker() {
                             const activePeople = custodySteps.filter(s => s.active && s.who !== '\u2014');
                             const uniqueNames = [...new Set(activePeople.map(s => s.who))];
                             const completedCount = custodySteps.filter(s => s.active).length;
-                            const custodyColors: Record<string, string> = {
-                              '#9ca3af': '#9ca3af', '#378ADD': '#378ADD', '#D85A30': '#D85A30',
-                              '#639922': '#639922', '#1D9E75': '#1D9E75',
-                            };
-
                             return (
                               <div className="pt-custody">
                                 <div className="pt-custody-toggle" onClick={(e) => { e.stopPropagation(); setCustodyOpenId(isCustodyOpen ? null : m.id); }}>
@@ -411,7 +406,7 @@ export default function PipelineTracker() {
                                   </svg>
                                   Chain of custody ({completedCount}/{custodySteps.length})
                                   <div className="pt-custody-summary">
-                                    {uniqueNames.slice(0, 4).map((name, i) => {
+                                    {uniqueNames.slice(0, 4).map((name, _i) => {
                                       const initials = name.split(' ').map(n => n[0]).join('');
                                       const step = activePeople.find(s => s.who === name);
                                       return (

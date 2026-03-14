@@ -116,14 +116,15 @@ const DatabaseContext = createContext<Database | null>(null);
 
 // ── Supabase row → app type mappers ──
 
-function toMeasurementTemplate(row: Record<string, unknown>): MeasurementTemplate {
+function toMeasurementTemplate(row: unknown): MeasurementTemplate {
+  const r = row as Record<string, unknown>;
   return {
-    id: row.id as string,
-    name: row.name as string,
-    environment_type: row.environment_type as MeasurementTemplate['environment_type'],
-    parameters: row.parameters as MeasurementTemplate['parameters'],
-    unit_cost: Number(row.unit_cost),
-    is_active: row.is_active as boolean,
+    id: r.id as string,
+    name: r.name as string,
+    environment_type: r.environment_type as MeasurementTemplate['environment_type'],
+    parameters: r.parameters as MeasurementTemplate['parameters'],
+    unit_cost: Number(r.unit_cost),
+    is_active: r.is_active as boolean,
   };
 }
 
@@ -319,7 +320,6 @@ export function DatabaseProvider({ children }: { children: ReactNode }) {
 
         // Step 3: Write to IndexedDB cache for next load
         const locs = (dbLocations || []) as Location[];
-        const locMap = new Map(locs.map(l => [l.id, l]));
         writeToCache({
           users: (dbUsers || []) as User[],
           locations: locs,

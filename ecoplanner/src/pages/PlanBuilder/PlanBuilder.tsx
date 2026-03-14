@@ -57,8 +57,6 @@ export default function PlanBuilder() {
   const syncEntriesToVisits = useCallback((updatedEntries: Entry[]) => {
     const planId = monitoringPlans[0]?.id ?? 'p1';
     const existingVisitIds = new Set(dbVisits.map(v => v.id));
-    const existingMeasIds = new Set(dbMeasurements.map(m => m.id));
-
     const newVisits: Visit[] = [];
     const newMeasurements: Measurement[] = [];
 

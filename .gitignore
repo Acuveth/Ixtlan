@@ -1,0 +1,6 @@
+git-portable/
+docs/
+node-v*/
+node_modules/
+*.env
+.env.*

@@ -95,6 +95,11 @@ const plannerQuickActions = [
     prompt: 'Show me all anomalies detected in the last 30 days',
   },
   {
+    title: 'pH anomalies',
+    description: 'Which locations have pH values outside normal ranges?',
+    prompt: 'Which locations have pH values outside normal ranges?',
+  },
+  {
     title: 'Optimize budget',
     description: 'Find savings without sacrificing coverage',
     prompt: 'Analyze budget usage and suggest optimizations for Q2',

@@ -24,7 +24,7 @@ export default function Layout() {
       <div className="hidden lg:block flex-shrink-0 h-full">
         <Sidebar />
       </div>
-      <main className="flex-1 min-w-0 h-full overflow-auto pb-16 lg:pb-0">
+      <main className="flex-1 min-w-0 h-full overflow-y-auto pb-14 lg:pb-0">
         <Outlet />
       </main>
       <MobileNav />

@@ -61,6 +61,7 @@ export default function PlanGenerator() {
   const [manualOpen, setManualOpen] = useState(false);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [focusedId, setFocusedId] = useState<string | null>(null);
+  const [showMobileMap, setShowMobileMap] = useState(false);
 
   // ── Derived data ──
 
@@ -555,8 +556,16 @@ export default function PlanGenerator() {
           </div>
         </div>
 
+        {/* Mobile map toggle */}
+        <div className="pg-map-toggle">
+          <button className="pg-btn pg-btn-secondary pg-map-toggle-btn" onClick={() => setShowMobileMap(!showMobileMap)}>
+            {showMobileMap ? 'Hide Map' : 'Show Map'}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><path d="M8 2v16"/><path d="M16 6v16"/></svg>
+          </button>
+        </div>
+
         {/* Right panel: Map */}
-        <div className="pg-right">
+        <div className={`pg-right${showMobileMap ? ' pg-right-visible' : ''}`}>
           <MapContainer
             center={[46.07, 14.82]}
             zoom={8}
@@ -719,11 +728,23 @@ const css = `
 .pg-cost-name{color:var(--color-text-secondary)}
 .pg-cost-val{color:var(--color-text-primary);font-weight:500}
 
+.pg-map-toggle{display:none}
+
 @media(max-width:900px){
   .pg{flex-direction:column}
-  .pg-left{width:100%;max-height:60vh;border-right:none;border-bottom:0.5px solid var(--color-border-tertiary)}
-  .pg-right{height:40vh}
+  .pg-left{width:100%;flex:1;min-height:0;border-right:none;border-bottom:0.5px solid var(--color-border-tertiary)}
+  .pg-right{display:none;height:50vh;flex-shrink:0}
+  .pg-right.pg-right-visible{display:block}
+  .pg-map-toggle{display:block;padding:8px 16px;border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+  .pg-map-toggle-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px}
   .pg-manual-grid{grid-template-columns:1fr}
   .pg-modify-grid{grid-template-columns:1fr}
+  .pg-header{flex-direction:column;gap:8px}
+  .pg-header-actions{width:100%}
+  .pg-header-actions .pg-btn{flex:1}
+  .pg-stats{flex-wrap:wrap}
+  .pg-stat{min-width:calc(33% - 4px)}
+  .pg-stat-cost{border-left:none;border-top:0.5px solid var(--color-border-tertiary);padding-left:0;padding-top:6px;margin-top:6px;width:100%}
+  .pg-card-actions{flex-wrap:wrap}
 }
 `;

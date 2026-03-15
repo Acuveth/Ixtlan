@@ -118,3 +118,46 @@ body {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
 }
+
+/* ── Mobile responsiveness ── */
+
+@media (max-width: 1024px) {
+  #root {
+    height: 100dvh;
+  }
+
+  /* Prevent overscroll bounce on iOS */
+  html, body {
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent text size adjust on orientation change */
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Better tap targets */
+  button, a, select, input {
+    min-height: 36px;
+  }
+
+  /* Fix fixed positioning with virtual keyboard */
+  body {
+    min-height: 100dvh;
+  }
+}
+
+/* Safe area padding for bottom nav */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

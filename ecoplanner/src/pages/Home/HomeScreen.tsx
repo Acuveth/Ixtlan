@@ -55,6 +55,27 @@ function ReliabilityBadge({ score }: { score?: number }) {
   );
 }
 
+/* ---- Dynamic measurement suggestion ---- */
+
+const MEASUREMENT_TYPES = ['Basic Chemistry', 'Heavy Metals', 'Biological Assessment', 'Microplastics', 'Nutrient Analysis', 'Pesticide Screen', 'Sediment Analysis', 'Bacterial Count'];
+const LOCATIONS = ['Sava — Ljubljana', 'Sava — Kranj', 'Drava — Maribor', 'Soča — Nova Gorica', 'Krka — Novo Mesto', 'Mura — Murska Sobota', 'Kolpa — Metlika', 'Savinja — Celje', 'Ljubljanica — Vrhnika', 'Kamniška Bistrica — Kamnik'];
+const WORKERS = ['Marko Novak', 'Nina Kovač', 'Tomaž Horvat', 'Ana Kovač', 'Luka Zupan'];
+
+function randomMeasurementAction(): { title: string; description: string; prompt: string } {
+  const type = MEASUREMENT_TYPES[Math.floor(Math.random() * MEASUREMENT_TYPES.length)];
+  const loc = LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)];
+  const worker = WORKERS[Math.floor(Math.random() * WORKERS.length)];
+  const month = Math.floor(Math.random() * 6) + 3; // March–August
+  const day = Math.floor(Math.random() * 25) + 1;
+  const date = new Date(2026, month, day);
+  const dateStr = date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  return {
+    title: `Schedule ${type}`,
+    description: `${loc} — ${worker}, ${dateStr}`,
+    prompt: `Create a ${type} measurement at ${loc} and assign it to ${worker} for ${dateStr}`,
+  };
+}
+
 /* ---- Quick Actions per role ---- */
 
 const plannerQuickActions = [
@@ -480,9 +501,10 @@ export default function HomeScreen() {
 
   const isFieldWorker = currentUser.role === 'field_worker';
   const isLabWorker = currentUser.role === 'lab_worker';
+  const dynamicAction = useMemo(() => randomMeasurementAction(), []);
   const quickActions = isLabWorker
     ? labWorkerQuickActions
-    : isFieldWorker ? fieldWorkerQuickActions : plannerQuickActions;
+    : isFieldWorker ? fieldWorkerQuickActions : [...plannerQuickActions, dynamicAction];
 
   // For field workers, show only their tasks; for planners show all
   const upcomingTasks = isFieldWorker

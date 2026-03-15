@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -53,9 +53,25 @@ function makeIcon(color: string, active: boolean) {
 // ── Component ──
 
 export default function PlanGenerator() {
-  const { locations, measurementTemplates, users, monitoringPlans, getRatingColor, addPlanBuilderEntries, removePlanBuilderEntries, addVisits, addMeasurements, removeVisits, removeMeasurements, planBuilderEntries } = useDatabase();
+  const { locations, measurementTemplates, measurements: dbMeasurements, planEntries, monitoringPlans, users, getRatingColor, addPlanBuilderEntries, removePlanBuilderEntries, addVisits, addMeasurements, removeVisits, removeMeasurements, planBuilderEntries, ready } = useDatabase();
   const fieldWorkers = users.filter(u => u.role === 'field_worker');
-  const [suggestions, setSuggestions] = useState<PlanSuggestion[]>(() => generateSuggestions());
+  const generatedRef = useRef(false);
+  const [suggestions, setSuggestions] = useState<PlanSuggestion[]>([]);
+
+  // Generate suggestions from real database data once it's loaded
+  useEffect(() => {
+    if (!ready || generatedRef.current) return;
+    if (locations.length === 0 || measurementTemplates.length === 0) return;
+    generatedRef.current = true;
+    const result = generateSuggestions({
+      locations,
+      measurementTemplates,
+      measurements: dbMeasurements,
+      planEntries,
+      monitoringPlans,
+    });
+    setSuggestions(result);
+  }, [ready, locations, measurementTemplates, dbMeasurements, planEntries, monitoringPlans]);
   const [modifyingId, setModifyingId] = useState<string | null>(null);
   const [modifyForm, setModifyForm] = useState<{ freq: Frequency; date: string; assignee: string }>({ freq: 'quarterly', date: '', assignee: '' });
   const [manualOpen, setManualOpen] = useState(false);

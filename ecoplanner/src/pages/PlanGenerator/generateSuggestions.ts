@@ -1,10 +1,4 @@
-import type { PlanSuggestion, Frequency } from '../../types';
-import {
-  measurements,
-  locations,
-  measurementTemplates,
-  planEntries,
-} from '../../data/mockData';
+import type { PlanSuggestion, Frequency, Location, MeasurementTemplate, Measurement, PlanEntry, MonitoringPlan } from '../../types';
 
 // Water quality thresholds (EU/Slovenian standards)
 const THRESHOLDS: Record<string, { min: number; max: number }> = {
@@ -47,10 +41,24 @@ function nextId(): string {
   return `sg-${++idCounter}`;
 }
 
-export function generateSuggestions(): PlanSuggestion[] {
+export interface SuggestionInput {
+  locations: Location[];
+  measurementTemplates: MeasurementTemplate[];
+  measurements: Measurement[];
+  planEntries: PlanEntry[];
+  monitoringPlans: MonitoringPlan[];
+}
+
+export function generateSuggestions(input: SuggestionInput): PlanSuggestion[] {
+  const { locations, measurementTemplates, measurements, planEntries, monitoringPlans } = input;
+
+  if (locations.length === 0 || measurementTemplates.length === 0) {
+    return [];
+  }
+
   idCounter = 0;
   const suggestions: PlanSuggestion[] = [];
-  const today = '2026-03-14';
+  const today = new Date().toISOString().split('T')[0];
 
   // ── Rule 1: Anomaly detection (critical) ──
   const completedWithResults = measurements.filter(
@@ -123,7 +131,7 @@ export function generateSuggestions(): PlanSuggestion[] {
 
   // ── Rule 3: Pattern continuation (medium) ──
   // For each active plan entry, look at completed measurements and suggest next scheduled one
-  const activePlanIds = ['p1', 'p2'];
+  const activePlanIds = monitoringPlans.filter(p => p.status === 'active').map(p => p.id);
   const activeEntries = planEntries.filter(pe => activePlanIds.includes(pe.plan_id));
 
   for (const entry of activeEntries) {

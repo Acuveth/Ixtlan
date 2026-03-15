@@ -115,8 +115,8 @@ export const visits: Visit[] = [
   { id: 'v13', plan_id: 'p2', location_id: 'l10', planned_date: '2026-05-10', status: 'planned', logistics_cost: 180, assigned_to: 'u4' },
   { id: 'v14', plan_id: 'p2', location_id: 'l12', planned_date: '2026-04-05', status: 'planned', logistics_cost: 110, assigned_to: 'u2' },
   // Extra visits for Marko (u2) — realistic weekly schedule
-  { id: 'v15', plan_id: 'p1', location_id: 'l1', planned_date: '2026-03-14', status: 'planned', logistics_cost: 85, assigned_to: 'u2', notes: 'Urgent re-sampling after pH anomaly upstream' },
-  { id: 'v16', plan_id: 'p1', location_id: 'l4', planned_date: '2026-03-14', status: 'planned', logistics_cost: 95, assigned_to: 'u2' },
+  { id: 'v15', plan_id: 'p1', location_id: 'l1', planned_date: '2026-03-15', status: 'planned', logistics_cost: 85, assigned_to: 'u2', notes: 'Urgent re-sampling after pH anomaly upstream' },
+  { id: 'v16', plan_id: 'p1', location_id: 'l4', planned_date: '2026-03-15', status: 'planned', logistics_cost: 95, assigned_to: 'u2' },
   { id: 'v17', plan_id: 'p1', location_id: 'l14', planned_date: '2026-03-16', status: 'planned', logistics_cost: 170, assigned_to: 'u2', notes: 'Combine with Drava upstream check' },
   { id: 'v18', plan_id: 'p1', location_id: 'l8', planned_date: '2026-03-17', status: 'planned', logistics_cost: 190, assigned_to: 'u2' },
   { id: 'v19', plan_id: 'p1', location_id: 'l13', planned_date: '2026-03-19', status: 'planned', logistics_cost: 110, assigned_to: 'u2' },
@@ -143,14 +143,14 @@ export const measurements: Measurement[] = [
   { id: 'm12', location_id: 'l7', measurement_template_id: 'mt1', plan_entry_id: 'pe10', visit_id: 'v9', assignee_id: 'u2', status: 'planned', pipeline_status: 'pending_sample', planned_date: '2026-03-20', analysis_cost: 120, lab_assignee_id: 'u6' },
   { id: 'm13', location_id: 'l9', measurement_template_id: 'mt1', plan_entry_id: 'pe13', visit_id: 'v10', assignee_id: 'u2', status: 'planned', pipeline_status: 'pending_sample', planned_date: '2026-03-22', analysis_cost: 120, lab_assignee_id: 'u6' },
 
-  // --- Today (Mar 14) — v15: Sava Ljubljana urgent re-sample ---
-  { id: 'm14', location_id: 'l1', measurement_template_id: 'mt1', plan_entry_id: 'pe1', visit_id: 'v15', assignee_id: 'u2', status: 'planned', pipeline_status: 'pending_sample', planned_date: '2026-03-14', analysis_cost: 120, lab_assignee_id: 'u6' },
-  { id: 'm15', location_id: 'l1', measurement_template_id: 'mt4', plan_entry_id: 'pe1', visit_id: 'v15', assignee_id: 'u2', status: 'planned', pipeline_status: 'pending_sample', planned_date: '2026-03-14', analysis_cost: 180, lab_assignee_id: 'u6' },
-  { id: 'm16', location_id: 'l1', measurement_template_id: 'mt2', plan_entry_id: 'pe2', visit_id: 'v15', assignee_id: 'u2', status: 'planned', pipeline_status: 'pending_sample', planned_date: '2026-03-14', analysis_cost: 350, lab_assignee_id: 'u6' },
+  // --- Today (Mar 15) — v15: Sava Ljubljana urgent re-sample ---
+  { id: 'm14', location_id: 'l1', measurement_template_id: 'mt1', plan_entry_id: 'pe1', visit_id: 'v15', assignee_id: 'u2', status: 'planned', pipeline_status: 'pending_sample', planned_date: '2026-03-15', analysis_cost: 120, lab_assignee_id: 'u6' },
+  { id: 'm15', location_id: 'l1', measurement_template_id: 'mt4', plan_entry_id: 'pe1', visit_id: 'v15', assignee_id: 'u2', status: 'planned', pipeline_status: 'pending_sample', planned_date: '2026-03-15', analysis_cost: 180, lab_assignee_id: 'u6' },
+  { id: 'm16', location_id: 'l1', measurement_template_id: 'mt2', plan_entry_id: 'pe2', visit_id: 'v15', assignee_id: 'u2', status: 'planned', pipeline_status: 'pending_sample', planned_date: '2026-03-15', analysis_cost: 350, lab_assignee_id: 'u6' },
 
-  // --- Today (Mar 14) — v16: Savinja Celje ---
-  { id: 'm17', location_id: 'l4', measurement_template_id: 'mt1', plan_entry_id: 'pe6', visit_id: 'v16', assignee_id: 'u2', status: 'planned', pipeline_status: 'pending_sample', planned_date: '2026-03-14', analysis_cost: 120, lab_assignee_id: 'u6' },
-  { id: 'm18', location_id: 'l4', measurement_template_id: 'mt3', plan_entry_id: 'pe6', visit_id: 'v16', assignee_id: 'u2', status: 'planned', pipeline_status: 'pending_sample', planned_date: '2026-03-14', analysis_cost: 280, lab_assignee_id: 'u6' },
+  // --- Today (Mar 15) — v16: Savinja Celje ---
+  { id: 'm17', location_id: 'l4', measurement_template_id: 'mt1', plan_entry_id: 'pe6', visit_id: 'v16', assignee_id: 'u2', status: 'planned', pipeline_status: 'pending_sample', planned_date: '2026-03-15', analysis_cost: 120, lab_assignee_id: 'u6' },
+  { id: 'm18', location_id: 'l4', measurement_template_id: 'mt3', plan_entry_id: 'pe6', visit_id: 'v16', assignee_id: 'u2', status: 'planned', pipeline_status: 'pending_sample', planned_date: '2026-03-15', analysis_cost: 280, lab_assignee_id: 'u6' },
 
   // --- Mar 16 — v17: Drava Ptuj ---
   { id: 'm19', location_id: 'l14', measurement_template_id: 'mt1', plan_entry_id: 'pe15', visit_id: 'v17', assignee_id: 'u2', status: 'planned', pipeline_status: 'pending_sample', planned_date: '2026-03-16', analysis_cost: 120, lab_assignee_id: 'u6' },
@@ -190,7 +190,7 @@ export const measurements: Measurement[] = [
 
 // Notifications
 export const notifications: Notification[] = [
-  { id: 'n1', user_id: 'u1', type: 'anomaly', title: 'pH Anomaly at Savinja - Celje', body: 'pH dropped to 5.2, significantly below the historical average of 7.1. Consider urgent re-monitoring within 14 days.', related_entity_type: 'measurement', related_entity_id: 'm5', is_read: false, created_at: '2026-03-14T08:30:00Z' },
+  { id: 'n1', user_id: 'u1', type: 'anomaly', title: 'pH Anomaly at Savinja - Celje', body: 'pH dropped to 5.2, significantly below the historical average of 7.1. Consider urgent re-monitoring within 14 days.', related_entity_type: 'measurement', related_entity_id: 'm5', is_read: false, created_at: '2026-03-15T08:30:00Z' },
   { id: 'n2', user_id: 'u1', type: 'assignment', title: 'Visit scheduled: Sava - Litija', body: 'Marko Novak has been assigned to collect samples on March 15, 2026.', related_entity_type: 'visit', related_entity_id: 'v5', is_read: false, created_at: '2026-03-13T16:00:00Z' },
   { id: 'n3', user_id: 'u1', type: 'budget_alert', title: 'Q1 Budget 72% utilized', body: 'River Monitoring 2026 Q1 spending is at €13,680 of €19,000 allocated. On track.', related_entity_type: 'plan', related_entity_id: 'p1', is_read: true, created_at: '2026-03-10T09:00:00Z' },
   { id: 'n4', user_id: 'u1', type: 'approval_needed', title: 'Frequency override requested', body: 'Jan Krajnc requests changing Soča monitoring from biennial to annual. Reason: recent construction activity upstream.', is_read: false, created_at: '2026-03-12T11:00:00Z' },

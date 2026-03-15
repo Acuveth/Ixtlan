@@ -126,7 +126,7 @@ export default function PlanBuilder() {
 
   // New state for calendar views + emergency
   const [viewMode, setViewMode] = useState<ViewMode>('table');
-  const [selectedDate, setSelectedDate] = useState('2026-03-14');
+  const [selectedDate, setSelectedDate] = useState('2026-03-15');
   const [showEmergencyPanel, setShowEmergencyPanel] = useState(false);
   const [emergencyEvents, setEmergencyEvents] = useState<EmergencyEvent[]>([]);
 

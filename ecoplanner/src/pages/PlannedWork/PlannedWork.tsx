@@ -4,7 +4,7 @@ import { useDatabase } from '../../context/DatabaseContext';
 import type { PipelineStatus, Measurement } from '../../types';
 import { queryAI } from '../../services/aiService';
 
-const TODAY = '2026-03-14';
+const TODAY = '2026-03-15';
 function dStr(d: Date): string { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
 function addD(d: string, n: number): string { const dt = new Date(d + 'T00:00:00'); dt.setDate(dt.getDate() + n); return dStr(dt); }
 function getMonday(d: string): string { const dt = new Date(d + 'T00:00:00'); const day = dt.getDay(); dt.setDate(dt.getDate() - (day === 0 ? 6 : day - 1)); return dStr(dt); }

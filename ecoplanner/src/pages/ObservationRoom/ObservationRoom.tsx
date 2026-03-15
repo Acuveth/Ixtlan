@@ -141,7 +141,7 @@ export default function ObservationRoom() {
 
   // Layer 2: Project stations to the timeline date
   // "today" is the real-world cutoff — historical data after this is simulated/future
-  const TODAY = '2026-03-14';
+  const TODAY = '2026-03-15';
 
   const stations = useMemo((): Station[] => {
     // The effective date for data is the earlier of timeline and today

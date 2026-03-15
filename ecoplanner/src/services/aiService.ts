@@ -496,7 +496,7 @@ export async function queryAI(message: string, history: { role: string; content:
       },
       body: JSON.stringify({
         model: MODEL,
-        max_tokens: 1024,
+        max_tokens: 4096,
         system: systemPrompt,
         messages,
       }),

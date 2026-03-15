@@ -247,6 +247,7 @@ export default function PipelineTracker() {
 .pt-check{display:inline-block;width:10px;height:10px}
 
 @media(max-width:600px){
+  .pt{padding-top:1rem}
   .pt-pills{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
   .pt-table{display:block}
   .pt-table thead{display:none}
